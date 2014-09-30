@@ -15,13 +15,6 @@
 			}
 
 
-			//$current_site = get_current_site();
-			$current_site_name = "WatzThis?";
-			$localized_vars = array("siteName"=> $current_site_name);
-			js_localize(php_vars,$localized_vars); 
-			?>
-
-
 			<script type="text/javascript">
 		    var recentPosts = <?php echo json_encode($recent_posts); ?>;
 			
