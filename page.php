@@ -1,26 +1,35 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package wpfamous
+ */
 
-			<?php 
-			$args = array( 'numberposts' => '5',
-						   'order' => 'ASC' );
+get_header(); ?>
 
-			$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-			$count = 0;
-			foreach( $recent_posts as $post ){
-				$thumb_id = get_post_thumbnail_id($post['ID']);	
-				$url = wp_get_attachment_url($thumb_id);			
-				$recent_posts[$count]["img"] = $url;
-				$count++;
-			}
+			<?php while ( have_posts() ) : the_post(); ?>
 
+				<?php get_template_part( 'content', 'page' ); ?>
 
-			<script type="text/javascript">
-		    var recentPosts = <?php echo json_encode($recent_posts); ?>;
-			
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() ) :
+						comments_template();
+					endif;
+				?>
 
-			require.config({baseUrl: '<?php echo get_template_directory_uri(); ?>/src/'});
-			require(['main']);
-			</script>
+			<?php endwhile; // end of the loop. ?>
 
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

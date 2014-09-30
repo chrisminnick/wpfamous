@@ -13,16 +13,9 @@ define(function(require, exports, module) {
     var mainContext = Engine.createContext();
 
 
-    var header = new Surface({
-        size: [undefined,50],
-        content: php_vars.siteName,
-        classes: ['page-title']
-    });
-
     var listView = new ListView({listData: recentPosts});
 
 
 
-    //mainContext.add(header);
     mainContext.add(listView);
 });

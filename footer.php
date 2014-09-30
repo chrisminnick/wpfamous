@@ -1,34 +1,25 @@
-			<footer class="footer" role="contentinfo">
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * Contains the closing of the #content div and all content after
+ *
+ * @package wpfamous
+ */
+?>
 
-				<div id="inner-footer" class="wrap cf">
+	</div><!-- #content -->
 
-					<nav role="navigation">
-						<?php wp_nav_menu(array(
-    					'container' => '',                              // remove nav container
-    					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-    					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-    					'theme_location' => 'footer-links',             // where it's located in the theme
-    					'before' => '',                                 // before the menu
-        			'after' => '',                                  // after the menu
-        			'link_before' => '',                            // before each link
-        			'link_after' => '',                             // after each link
-        			'depth' => 0,                                   // limit the depth of the nav
-    					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
-						)); ?>
-					</nav>
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'wpfamous' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'wpfamous' ), 'WordPress' ); ?></a>
+			<span class="sep"> | </span>
+			<?php printf( __( 'Theme: %1$s by %2$s.', 'wpfamous' ), 'wpfamous', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
 
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+<?php wp_footer(); ?>
 
-				</div>
-
-			</footer>
-
-		</div>
-
-		<?php // all js scripts are loaded in library/bones.php ?>
-		<?php wp_footer(); ?>
-
-	</body>
-
-</html> <!-- end of site. what a ride! -->
+</body>
+</html>
