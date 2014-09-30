@@ -1,0 +1,29 @@
+html, body {
+    width: 550px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    position: relative;
+}
+
+.device {
+    height: 780px;
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    margin-top: -390px;
+    background-image: url(../img/iphone.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.iframe {
+    border: 'none';
+    top: 138px; left: 126px;
+    position: absolute;
+    width: 295px;
+    height: 498px
+}

@@ -1,0 +1,34 @@
+html {
+    background-color: #fff;
+    color: #000;
+}
+
+.double-sided {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+p.content {
+	color:white;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 40px;
+
+}
+.title {
+	color:white;
+	padding-left: 20px;
+	padding-bottom: 0px;
+}
+
+@media only screen and (max-width: 320px) {
+	.title {
+		font-size:20px;
+		line-height: 14px;
+		margin: 0px;
+	}
+	p.content {
+		font-size:12px;
+		margin-top: 0px;
+	}
+}
