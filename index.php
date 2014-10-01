@@ -24,6 +24,7 @@ get_header(); ?>
 				$thumb_id = get_post_thumbnail_id($post['ID']);	
 				$url = wp_get_attachment_url($thumb_id);			
 				$recent_posts[$count]["img"] = $url;
+				$recent_posts[$count]["permalink"] = get_permalink( $post['ID'] );
 				$count++;
 			}
 			?>

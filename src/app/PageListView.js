@@ -51,7 +51,8 @@ define(function(require, exports, module) {
 				yOffset: yOffset,
                 img: this.options.listData[i].img,
 				post_title: this.options.listData[i].post_title,
-				post_content: this.options.listData[i].post_content
+				post_content: this.options.listData[i].post_content,
+                permalink: this.options.listData[i].permalink
             });
 
             stripListView.pipe(this._eventInput);

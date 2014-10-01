@@ -17,7 +17,8 @@ define(function(require, exports, module) {
      *		- (String) ID
 	 * 		- (String) post_title
 	 * 		- (String) post_content
-	 * 		- (String) featured_img
+	 * 		- (String) img
+	 *		- (String) permalink
      * @return this
      */
     function StripListView(options)
@@ -41,7 +42,8 @@ define(function(require, exports, module) {
 		ID: "",
 		post_title: "",
 		post_content: "",
-        img: ""
+        img: "",
+        permalink: ""
     };
 
     // CUSTOM PRIVATE METHODS
@@ -77,7 +79,7 @@ define(function(require, exports, module) {
 
 		this.banSurf = new Surface({
 			size: [undefined, undefined],
-			content: '<img class="img-top" src="wp-content/themes/wpfamous/assets/img-top.png" />'
+			content: ''
 		});
 
 		// TEXT SURFACE + MODIFIER
@@ -89,7 +91,7 @@ define(function(require, exports, module) {
 			properties: {
 				webkitTransformOrigin: "25% 0"
 			},
-			content: '<div class="title">' + this.options.post_title + '</div>'
+			content: '<div class="title"><a href="' + this.options.permalink + '">' + this.options.post_title + '</a></div>'
 		});
 
 
