@@ -414,11 +414,12 @@ textarea {
 5.1 Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #333;
+	text-decoration: none;
 }
 
 a:visited {
-	color: purple;
+	color: #333;
 }
 
 a:hover,
