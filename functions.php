@@ -92,34 +92,28 @@ add_action( 'widgets_init', 'wpfamous_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wpfamous_scripts() {
-	wp_enqueue_style( 'wpfamous-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'wpfamous-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'wpfamous-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-   
+    wp_enqueue_style( 'wpfamous-style', get_stylesheet_uri() );
+    wp_enqueue_script( 'wpfamous-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+    wp_enqueue_script( 'wpfamous-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
     // module loader
     wp_register_script( 'requirejs', '//code.famo.us/lib/require.js', array(), '', false );
+
     
-    //adding scripts file in the footer
-    wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', false );
-        
+    
     // famo.us shims for backwards compatibility
     wp_register_script( 'famous-prototypeBind', '//code.famo.us/lib/functionPrototypeBind.js', array(), '', false );
     wp_register_script( 'famous-classList', '//code.famo.us/lib/classList.js', array(), '', false );
     wp_register_script( 'famous-requestAnimationFrame', '//code.famo.us/lib/requestAnimationFrame.js', array(), '', false );
 
     // famous
-
     wp_register_style( 'famous-stylesheet', '//code.famo.us/famous/0.2/famous.css', array(), '', 'all' );
     wp_register_style( 'famous-stylesheet', get_stylesheet_directory_uri() . '/css/app.css', array(), '', 'all' );
 
 
     wp_register_script( 'famous', '//code.famo.us/famous/0.2/famous.min.js', array(), '', false );
-
+    
     // enqueue styles and scripts
     wp_enqueue_script( 'requirejs' );
-
     wp_enqueue_script( 'famous-prototypeBind' );
     wp_enqueue_script( 'famous-classList' );
     wp_enqueue_script( 'famous-requestAnimationFrame' );
@@ -157,3 +151,22 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Util for converting PHP vars to JS.
+ */
+function js_localize($name, $vars) {
+    $data = "var $name = {";
+    $arr = array();
+    foreach ($vars as $key => $value) {
+        $arr[count($arr)] = $key . " : '" . esc_js($value) . "'";
+    }
+    $data .= implode(",",$arr);
+    $data .= "};";
+    echo "<script type='text/javascript'>\n";
+    echo "/* <![CDATA[ */\n";
+    echo $data;
+    echo "\n/* ]]> */\n";
+    echo "</script>\n";
+}
+

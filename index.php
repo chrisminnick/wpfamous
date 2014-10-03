@@ -10,35 +10,51 @@
  *
  * @package wpfamous
  */
+	get_header();
+	wp_footer();
+	ob_start();
+	get_header();
+	$wpheader = ob_get_contents();
+	ob_end_clean();
+	
+	ob_start();
+	get_footer();
+	$wpfooter = ob_get_contents();
+	ob_end_clean();
+	
+	ob_start();
+	get_sidebar();
+	$wpsidebar = ob_get_contents();
+	ob_end_clean();
 
-get_header(); ?>
+	
+	$localized_vars = array("header"=> $wpheader,"footer"=> $wpfooter,"sidebar"=> $wpsidebar);
+	js_localize(php_vars,$localized_vars); 
+ ?>
 
-			<?php 
-			$args = array( 'numberposts' => '5',
-						   'order' => 'ASC' );
+	<?php
+	$args = array( 'numberposts' => '15',
+		       'category' => 2,
+		       'order' => 'ASC' );
 
-			$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
+	$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
 
-			$count = 0;
-			foreach( $recent_posts as $post ){
-				$thumb_id = get_post_thumbnail_id($post['ID']);	
-				$url = wp_get_attachment_url($thumb_id);			
-				$recent_posts[$count]["img"] = $url;
-				$recent_posts[$count]["permalink"] = get_permalink( $post['ID'] );
-				$count++;
-			}
-			?>
-
-
-
-			<script type="text/javascript">
-		    var recentPosts = <?php echo json_encode($recent_posts); ?>;
-			
-
-			require.config({baseUrl: '<?php echo get_template_directory_uri(); ?>/src/'});
-			require(['main']);
-			</script>
+	$count = 0;
+	foreach( $recent_posts as $post ){
+		$thumb_id = get_post_thumbnail_id($post['ID']);	
+		$url = wp_get_attachment_url($thumb_id);			
+		$recent_posts[$count]["img"] = $url;
+		$recent_posts[$count]["permalink"] = get_permalink( $post['ID'] );
+		$count++;
+	}
+	?>
 
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+
+	<script type="text/javascript">
+	var recentPosts = <?php echo json_encode($recent_posts); ?>;
+	
+
+	require.config({baseUrl: '<?php echo get_template_directory_uri(); ?>/src/'});
+	require(['main']);
+	</script>

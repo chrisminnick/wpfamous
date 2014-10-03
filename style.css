@@ -84,6 +84,8 @@ html {
 
 body {
 	background: #fff; /* Fallback for when there is no custom background color defined. */
+        background: url('/images/watzthislogo_flat72.png');
+        background-size: contain;
 }
 
 article,
@@ -410,6 +412,7 @@ textarea {
 /*--------------------------------------------------------------
 5.0 Navigation
 --------------------------------------------------------------*/
+
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
@@ -447,6 +450,7 @@ a:active {
 .main-navigation li {
 	float: left;
 	position: relative;
+        padding-left: 20px;
 }
 
 .main-navigation a {
@@ -640,9 +644,46 @@ a:active {
 --------------------------------------------------------------*/
 .title {
     padding: 0px 20px;
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.title a {
+    color: white;
 }
 p.content {
     padding: 0px 20px;
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+p.content a {
+	color: #999;
+}
+
+@media only screen and (max-width: 320px) {
+	.title {
+		font-size:20px;
+		line-height: 14px;
+		margin: 0px;
+	}
+	p.content {
+		font-size:12px;
+		margin-top: 0px;
+	}
+}
+.site-info {
+    text-align:center;
+    margin-top: 10px;
 }
 /*--------------------------------------------------------------
 10.1 Posts and pages
@@ -676,6 +717,19 @@ p.content {
 	margin: 0 0 1.5em;
 }
 
+h1.site-title a{
+    font-size: 18px;
+    color: #fff;
+}
+h2.site-description {
+    font-style:italic;
+    color: #999;
+}
+.site-branding {
+    width: 200px;
+    float: left;
+    padding-left: 20px;
+}
 /*--------------------------------------------------------------
 10.2 Asides
 --------------------------------------------------------------*/
