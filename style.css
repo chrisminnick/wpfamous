@@ -300,6 +300,7 @@ th {
 	font-weight: bold;
 }
 
+
 /*--------------------------------------------------------------
 4.0 Forms
 --------------------------------------------------------------*/
@@ -438,6 +439,7 @@ a:active {
 	display: block;
 	float: left;
 	width: 100%;
+        background-color:#000;
 }
 
 .main-navigation ul {
@@ -450,6 +452,7 @@ a:active {
 	float: left;
 	position: relative;
         padding-left: 20px;
+        border-left: 1px solid #666;
 }
 
 .main-navigation a {
@@ -687,7 +690,15 @@ p.content a {
 }
 .site-info {
     text-align:center;
-    margin-top: 10px;
+}
+#bottombar {
+    bottom:0;
+    position:fixed;
+    z-index:150;
+    _position:absolute;
+    _top:expression(eval(document.documentElement.scrollTop+
+        (document.documentElement.clientHeight-this.offsetHeight)));
+    height:125px;
 }
 /*--------------------------------------------------------------
 10.1 Posts and pages
