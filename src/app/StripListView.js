@@ -17,8 +17,7 @@ define(function(require, exports, module) {
      *		- (String) ID
 	 * 		- (String) post_title
 	 * 		- (String) post_content
-	 * 		- (String) img
-	 *		- (String) permalink
+	 * 		- (String) featured_img
      * @return this
      */
     function StripListView(options)
