@@ -1,33 +1,23 @@
 <?php
 /**
- * The template for displaying the footer.
+ * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after
+ * Contains footer content and the closing of the #main and #page div elements.
  *
- * @package wpfamous
+ * @package WordPress
+ * @subpackage Twenty_Twelve
+ * @since Twenty Twelve 1.0
  */
 ?>
-<div id="bottombar">
-<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</div>
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle"><?php _e( 'Primary Menu', 'wpfamous' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav><!-- #site-navigation -->
-</header><!-- #masthead -->	
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
 		<div class="site-info">
+			<?php do_action( 'twentytwelve_credits' ); ?>
+			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentytwelve' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentytwelve' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentytwelve' ), 'WordPress' ); ?></a>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-</div>
-</div>
+</div><!-- #page -->
 
-
-
+<?php wp_footer(); ?>
 </body>
 </html>
